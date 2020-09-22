@@ -19,7 +19,6 @@ class Record(Model):
 db.connect()
 db.create_tables([Record])
 
-#TODO clean up output and comment functions
 def main():
     print('Chainsaw Juggling Record Holders as of July 2018')
     while True:
@@ -33,7 +32,7 @@ def main():
             edit_record()
         elif choice == 4:
             delete_record()
-        elif choice == 'Q'.upper():
+        elif choice.upper() == 'Q':
             break
 
 
@@ -46,7 +45,7 @@ def print_menu():
 
 def get_menu_choice():
     choice = input('\nPlease choose an option (1-4) or press "Q" to quit: ')
-    while choice.isnumeric() is False and choice != 'Q':
+    while choice.isnumeric() is False and choice.upper() != 'Q':
         choice = input('Please choose an option (1-4) or press "Q" to quit: ')
     if choice.isnumeric():
         choice = int(choice)
