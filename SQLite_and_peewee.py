@@ -29,8 +29,7 @@ def main():
             edit_record()
         elif choice == 4:
             delete_record()
-
-        if choice == 'Q'.upper():
+        elif choice == 'Q'.upper():
             break
 
 def print_menu():
@@ -40,8 +39,12 @@ def print_menu():
     print('4: Delete a record')
 
 def get_menu_choice():
-    return input('Please choose an option (1-4) or press "Q" to quit: ')
-
+    choice = input('Please choose an option (1-4) or press "Q" to quit: ')
+    while choice.isnumeric() is False and choice != 'Q':
+        choice = input('Please choose an option (1-4) or press "Q" to quit: ')
+    if choice.isnumeric():
+        choice = int(choice)
+    return choice
 
 def new_record():
     print('works')
