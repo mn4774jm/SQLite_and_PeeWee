@@ -26,4 +26,23 @@ def main():
         if choice == 'Q'.upper():
             break
 
+def print_menu():
+
+
+def get_menu_choice():
+
+
+def get_action():
+
+
+def new_record():
+
+def search_record():
+
+def edit_record():
+
+def delete_record():
+
+
+
 
