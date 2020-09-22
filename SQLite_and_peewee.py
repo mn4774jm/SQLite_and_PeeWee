@@ -69,8 +69,11 @@ def search_record():
 
 def edit_record():
     return
+
 def delete_record():
-    return
+    delete_name = input('Enter name of record holder you would like to delete: ')
+    rows_deleted = Record.delete().where(Record.name == delete_name).execute()
+    print('Rows deleted:', rows_deleted)
 
 
 if __name__ =='__main__':
