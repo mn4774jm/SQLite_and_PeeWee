@@ -68,13 +68,21 @@ def search_record():
             print(name)
 
 def edit_record():
-    return
+    edit_name = input('Enter name of record holder to edit: ')
+    name_returned = Record.select().where(Record.name == edit_name)
+    if name_returned:
+        edit_caught = input('How many fish were caught?: ')
+        for record in name_returned:
+            record.catches = edit_caught
+            record.save()
 
 def delete_record():
     delete_name = input('Enter name of record holder you would like to delete: ')
     rows_deleted = Record.delete().where(Record.name == delete_name).execute()
-    print('Rows deleted:', rows_deleted)
-
+    if rows_deleted:
+        print('Rows deleted:', rows_deleted)
+    else:
+        print('No match found')
 
 if __name__ =='__main__':
     main()
