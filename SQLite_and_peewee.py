@@ -15,3 +15,15 @@ class Record(Model):
 # set string return statement
     def __str__(self):
         return f'Name: {self.name} | Country: {self.country} | Catches: {self.catches}'
+
+def main():
+
+    while True:
+        print_menu()
+        get_menu_choice()
+        action = get_action()
+        action()
+        if choice == 'Q'.upper():
+            break
+
+
