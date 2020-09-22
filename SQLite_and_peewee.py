@@ -21,8 +21,15 @@ def main():
     while True:
         print_menu()
         choice = get_menu_choice()
-        action = get_action()
-        action()
+        if choice == 1:
+            new_record()
+        elif choice == 2:
+            search_record()
+        elif choice == 3:
+            edit_record()
+        elif choice == 4:
+            delete_record()
+
         if choice == 'Q'.upper():
             break
 
@@ -35,17 +42,17 @@ def print_menu():
 def get_menu_choice():
     return input('Please choose an option (1-4) or press "Q" to quit: ')
 
-def get_action():
-
 
 def new_record():
-
+    print('works')
+    # return
 def search_record():
-
+    return
 def edit_record():
-
+    return
 def delete_record():
+    return
 
 
-
-
+if __name__ =='__main__':
+    main()
