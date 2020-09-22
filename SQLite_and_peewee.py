@@ -1,5 +1,4 @@
 from peewee import *
-
 db = SqliteDatabase('records.sqlite')
 
 # Model class created to produce columns in database
@@ -15,6 +14,10 @@ class Record(Model):
 # set string return statement
     def __str__(self):
         return f'Name: {self.name} | Country: {self.country} | Catches: {self.catches}'
+
+db.connect()
+db.create_tables([Record])
+
 
 def main():
 
@@ -47,8 +50,14 @@ def get_menu_choice():
     return choice
 
 def new_record():
-    print('works')
-    # return
+    name = input('Enter name: ')
+    country = input('Country of origin: ')
+    caught = input('Number of fish caught: ')
+    while caught.isnumeric() is False:
+        caught = input('Number of fish caught (Numbers only): ')
+    record = Record(name=name, country=country, catches=caught)
+    record.save()
+
 def search_record():
     return
 def edit_record():
