@@ -7,7 +7,7 @@ class Record(Model):
     country = CharField()
     catches = IntegerField()
 
-# connected to database
+# Link to database
     class Meta:
         database = db
 
@@ -58,6 +58,7 @@ def new_record():
     caught = input('Number of fish caught: ')
     while caught.isnumeric() is False:
         caught = input('Number of fish caught (Numbers only): ')
+    # object is created from user input and saved into the database
     record = Record(name=name, country=country, catches=caught)
     record.save()
 
@@ -65,6 +66,7 @@ def new_record():
 
 def search_record():
     search_name = input('Enter name to search for: ')
+    # SQL query to return any rows that contain user input
     name_found = Record.select().where(Record.name.contains(search_name))
     if name_found.count() == 0:
         print('No match found\n')
@@ -75,13 +77,18 @@ def search_record():
 
 def edit_record():
     edit_name = input('Enter name of record holder to edit: ')
+    # SQL query to return any rows that contain the users string
     name_returned = Record.select().where(Record.name.contains(edit_name))
     if name_returned:
-        edit_caught = input('How many fish were caught?: ')
+        # loop used to ensure that correct record is altered
         for record in name_returned:
-            record.catches = edit_caught
-            record.save()
-            print(f'{edit_name} has been updated\n')
+            print(record)
+            edit = input('Edit this record? (Y to proceed): ').upper()
+            if edit == 'Y':
+                edit_caught = input('How many fish were caught?: ')
+                record.catches = edit_caught
+                record.save()
+                print(f'{record.name} has been updated\n')
     else:
         print('No match found in database\n')
 
@@ -95,7 +102,7 @@ def delete_record():
             if delete == 'Y':
                 rows_deleted = Record.delete().where(Record.name == delete_name).execute()
                 if rows_deleted:
-                    print('Rows deleted:', rows_deleted)
+                    print('Rows deleted:\n', rows_deleted)
     else:
         print('No match found\n')
 
