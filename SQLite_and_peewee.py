@@ -20,7 +20,7 @@ def main():
 
     while True:
         print_menu()
-        get_menu_choice()
+        choice = get_menu_choice()
         action = get_action()
         action()
         if choice == 'Q'.upper():
@@ -33,7 +33,7 @@ def print_menu():
     print('4: Delete a record')
 
 def get_menu_choice():
-
+    return input('Please choose an option (1-4) or press "Q" to quit: ')
 
 def get_action():
 
