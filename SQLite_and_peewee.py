@@ -61,7 +61,7 @@ def new_record():
     # object is created from user input and saved into the database
     record = Record(name=name, country=country, catches=caught)
     record.save()
-
+    print()
 
 
 def search_record():
@@ -81,6 +81,7 @@ def edit_record():
     name_returned = Record.select().where(Record.name.contains(edit_name))
     if name_returned:
         # loop used to ensure that correct record is altered
+        # Also allows for mutltiple records from the same person to be modded
         for record in name_returned:
             print(record)
             edit = input('Edit this record? (Y to proceed): ').upper()
@@ -100,7 +101,7 @@ def delete_record():
         for record in name_to_delete:
             delete = input(f'Delete {record.name}? Enter Y to delete: ').upper()
             if delete == 'Y':
-                rows_deleted = Record.delete().where(Record.name == delete_name).execute()
+                rows_deleted = Record.delete().where(Record.name == record.name).execute()
                 if rows_deleted:
                     print('Rows deleted:\n', rows_deleted)
     else:
