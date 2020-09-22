@@ -59,7 +59,14 @@ def new_record():
     record.save()
 
 def search_record():
-    return
+    search_name = input('Enter name to search for: ')
+    name_found = Record.select().where(Record.name == search_name)
+    if name_found.count() == 0:
+        print('No match found')
+    else:
+        for name in name_found:
+            print(name)
+
 def edit_record():
     return
 def delete_record():
