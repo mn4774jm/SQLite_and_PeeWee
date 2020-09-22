@@ -27,7 +27,10 @@ def main():
             break
 
 def print_menu():
-
+    print('1: New Record')
+    print('2: Search')
+    print('3: Edit a record')
+    print('4: Delete a record')
 
 def get_menu_choice():
 
