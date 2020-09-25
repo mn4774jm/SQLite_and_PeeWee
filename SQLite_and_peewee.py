@@ -55,9 +55,9 @@ def get_menu_choice():
 def new_record():
     name = input('\nEnter name: ')
     country = input('Country of origin: ')
-    caught = input('Number of fish caught: ')
+    caught = input('Number of chainsaws caught: ')
     while caught.isnumeric() is False:
-        caught = input('Number of fish caught (Numbers only): ')
+        caught = input('Number of chainsaws caught (Numbers only): ')
     # object is created from user input and saved into the database
     record = Record(name=name, country=country, catches=caught)
     record.save()
@@ -86,7 +86,7 @@ def edit_record():
             print(record)
             edit = input('Edit this record? (Y to proceed): ').upper()
             if edit == 'Y':
-                edit_caught = input('How many fish were caught?: ')
+                edit_caught = input('How many chainsaws were caught?: ')
                 record.catches = edit_caught
                 record.save()
                 print(f'{record.name} has been updated\n')
